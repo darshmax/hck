@@ -4,7 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:hck_case_management/Screens/LoginScreen/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'Constants.dart';
+
+import 'constants.dart';
 
 
 class AuthService {

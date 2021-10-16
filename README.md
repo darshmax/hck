@@ -1,3 +1,12 @@
+Imp Note
+
+Once you clone the app in the android studio things that you need to do
+1. edit configuration by going to settigs and selecting languages and framework menu and select the flutter path. mine is C:\src\flutter\flutter
+2. go to pubspec.yaml and do pub get (here you dont get any error unless you are not running dart sdk 2.14.3) if you get the error also you can modify the dependencies in the pubspec.yaml
+3. Flutter run in the project path directory
+4. Thats it it will debug and install the apk in your mobile
+
+
 # hck_case_management
 
 A new Flutter project.

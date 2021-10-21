@@ -1,5 +1,7 @@
 import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:hck_case_management/Apis/notificationApi.dart';
 import 'package:hck_case_management/Helpers/utils.dart';
 import 'package:hck_case_management/Providers/global_provider.dart';
 import 'package:hck_case_management/Providers/login_provider.dart';
@@ -15,7 +17,19 @@ class MainLogin extends StatefulWidget {
 
 class _MainLoginState extends State<MainLogin> {
 
+  FlutterLocalNotificationsPlugin fltrNotification;
   void initState() {
+
+    super.initState();
+    var androidInitialize = new AndroidInitializationSettings('app_icon');
+    var iOSinitialize = new IOSInitializationSettings();
+    var initializatonSettings = new InitializationSettings(android: androidInitialize, iOS: iOSinitialize);
+    fltrNotification = new FlutterLocalNotificationsPlugin();
+    fltrNotification.initialize(initializatonSettings, onSelectNotification: notificationSelected);
+
+    _showNotification();
+
+
     check().then((internet) {
       if (internet != null && internet) {
 
@@ -26,6 +40,20 @@ class _MainLoginState extends State<MainLogin> {
     super.initState();
   }
 
+  _showNotification() {
+    var androidDetails = new AndroidNotificationDetails("Channel ID",
+        "High court App",
+        "Sample Notificatoin",
+        importance: Importance.max
+    );
+    var iosDetails = new IOSNotificationDetails();
+    var generalNotificationDetails = new NotificationDetails(androidDetails, iosDetails);
+  }
+
+  Future notificationSelected (String payload) async {
+
+
+  }
   final TextEditingController mUserName = TextEditingController(),
       mPhone = TextEditingController();
 
